@@ -1,0 +1,11 @@
+{
+  "name": "Catan Dice",
+  "short_name": "Catan Dice",
+  "description": "A simple dice roller for Catan that tracks how often each number comes up.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e3b4f",
+  "theme_color": "#0e3b4f",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
