@@ -1,11 +1,13 @@
 :root {
-  --sea: #0e3b4f;
-  --deep: #0a2c3c;
-  --shoal: #164a61;
+  --sea: #1d4f91;
+  --deep: #153d73;
+  --shoal: #2a62ab;
   --foam: #e9f1f2;
-  --mist: #8fb0ba;
+  --mist: #b2c7e6;
   --wheat: #f4c45a;
   --brick: #d9543a;
+  /* Lighter than brick so a rolled 7 stays legible on the blue background. */
+  --robber: #ff9580;
   --parchment: #f1e4c4;
   --ink: #1d2a30;
 
@@ -182,7 +184,7 @@ button {
 }
 
 .sum--seven + .stage__hint {
-  color: var(--brick);
+  color: var(--robber);
   font-weight: 600;
 }
 
@@ -255,7 +257,7 @@ button {
 }
 
 .sum--seven {
-  color: var(--brick);
+  color: var(--robber);
 }
 
 @keyframes land {
@@ -293,7 +295,7 @@ button {
 }
 
 .recent li.is-seven {
-  color: var(--brick);
+  color: var(--robber);
 }
 
 /* ---------- Live tally ---------- */
@@ -588,7 +590,7 @@ button {
 }
 
 .sheet::backdrop {
-  background: rgb(5 20 28 / 0.6);
+  background: rgb(8 24 48 / 0.6);
   backdrop-filter: blur(3px);
 }
 
