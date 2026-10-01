@@ -35,7 +35,9 @@ export function App() {
 
   const last = game.rolls.at(-1)
   const sum = last ? last.a + last.b : undefined
-  const player = currentPlayer(game)
+  // Next to roll vs. who rolled the result on screen: label each one explicitly.
+  const next = game.players[currentPlayer(game) ?? -1]
+  const roller = last?.player !== undefined ? game.players[last.player] : undefined
 
   const commit = useCallback((a: number, b: number) => {
     setFaces([a, b])
@@ -127,7 +129,11 @@ export function App() {
           </span>
           {game.rolls.length > 0 && (
             <span className="muted">
-              {since7 === 0 ? 'Seven just now' : `${since7} since last 7`}
+              {since7 === 0
+                ? 'Seven just now'
+                : since7 === game.rolls.length
+                  ? 'No 7 yet'
+                  : `${since7} since last 7`}
             </span>
           )}
         </div>
@@ -142,11 +148,25 @@ export function App() {
         </button>
       </header>
 
-      <button className="stage" onClick={roll} aria-label="Roll the dice">
-        {player !== undefined && (
+      <button className="stage" onClick={roll} aria-label={next ? `Roll for ${next}` : 'Roll the dice'}>
+        {next && (
           <span className="stage__player">
-            {game.players[player]}
-            <span className="muted">’s roll</span>
+            {rolling ? (
+              <>
+                <span className="muted">Rolling for </span>
+                {next}
+              </>
+            ) : roller ? (
+              <>
+                {roller}
+                <span className="muted"> rolled</span>
+              </>
+            ) : (
+              <>
+                {next}
+                <span className="muted"> goes first</span>
+              </>
+            )}
           </span>
         )}
         <span className="dice">
@@ -189,7 +209,7 @@ export function App() {
           </svg>
         </button>
         <button className="btn btn--primary btn--roll" onClick={roll} disabled={rolling}>
-          Roll
+          {next ? `Roll for ${next}` : 'Roll'}
         </button>
       </div>
 

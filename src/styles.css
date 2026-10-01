@@ -96,6 +96,10 @@ button {
 
 .btn--roll {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   height: 58px;
   font-size: 1.25rem;
   font-weight: 700;
